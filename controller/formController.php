@@ -10,13 +10,7 @@ Class formController Extends baseController {
  }
 
  public function view(){
-	/*** should not have to call this here.... FIX ME ***/
-   $this->registry->template->form_heading = 'This is the form heading';
-   $this->registry->template->form_content = 'This is the form content';
-   
 
-   
-   $db = new db();
    //$this->registry->settings = $db->selectSecuritySettings("cc3107");
    $this->registry->template->set = $db->selectSecuritySettings("cc3107");
 

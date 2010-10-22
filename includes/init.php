@@ -13,20 +13,19 @@
  include __SITE_PATH . '/application/' . 'template.class.php';
 
  /*** auto load model classes ***/
-    function __autoload($class_name) {
-    $filename = strtolower($class_name) . '.class.php';
-    $file = __SITE_PATH . '/model/' . $filename;
-    //var_dump($file);
-    if (file_exists($file) == false)
-    {
-        return false;
-    }
-  include ($file);
-}
+ function __autoload($class_name){
+   $filename = strtolower($class_name) . '.class.php';
+   $file = __SITE_PATH . '/model/' . $filename;
+   
+   if(file_exists($file) == false){
+     return false;
+   }
+   
+   include ($file);
+ }
 
  /*** a new registry object ***/
  $registry = new registry;
- 
- /*** create the database registry object ***/
- //$registry->db = db::connect();
+
+ $registry->db = db::connect();
 ?>
