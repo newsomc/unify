@@ -27,5 +27,6 @@
  /*** a new registry object ***/
  $registry = new registry;
 
- $registry->db = db::connect();
+ $registry->db = db::getInstance();
+
 ?>
