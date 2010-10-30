@@ -1,5 +1,4 @@
 <?php
-require_once('views/_base.php');
 require_once('includes/init.php');
 
 Class formController Extends baseController {
@@ -11,8 +10,6 @@ Class formController Extends baseController {
 
  public function view(){
 
-   //$this->registry->settings = $db->selectSecuritySettings("cc3107");
-   //$this->registry->template->set = $db->selectSecuritySettings("cc3107");
    $this->registry->template->form_heading = 'My Form';
    $this->registry->template->form_content = 'This is the form title';
 
@@ -23,10 +20,21 @@ Class formController Extends baseController {
    $this->registry->template->show('form_view');
  }
 
- public function cool(){
-   $this->registry->template->form_heading = 'COOL!';
-   $this->registry->template->form_content = 'too cool!';
-   $this->registry->template->show('form_cool');
- }
+ public function add(){
+   $privs = $this->registry->db->getPrivLevels();
+   $javascript_array = array(
+		'some_js.js' ,
+		'another_js.js'
+	);
+	$css_array = array(
+		'some_css.css',
+		'another_css.css'
+	);
+   $this->registry->template->writeHead($javascript_array, $css_array); 
+   $this->registry->template->privs = $privs;
+   $this->registry->template->writeFooter(); 
+   $this->registry->template->show('form_add');
+ 	
+  }
 }
 ?>

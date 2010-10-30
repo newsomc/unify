@@ -1,5 +1,6 @@
 <?php
 
+ require_once('config.php');
  /*** include the controller class ***/
  include __SITE_PATH . '/application/' . 'controller_base.class.php';
 

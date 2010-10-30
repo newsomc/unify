@@ -1,11 +1,10 @@
 <?php
 
-class db{
- 
+class db{ 
  private static $pdo = NULL;
  private static $singleton = NULL;	
  private static $username  = "root";
- private static $password = "bigsur2526";
+ private static $password = "";
  private static $dsn= "mysql:host=localhost;dbname=bulletin";
 
  private function __construct() {
@@ -78,6 +77,19 @@ class db{
     }
     $departmentCodes = array("Academic_Department_Codes" => $departmentCodes);
     return json_encode($departmentCodes);
+  }
+
+  public function getPrivLevels(){
+    $exc = self::$pdo->prepare("SELECT DISTINCT Privilege_Level 
+	 							FROM Security ORDER BY Privilege_Level");
+    $exc->execute();
+    $pL = $exc->fetchAll();
+    $privLevels = array();
+    foreach($pL as $privs){
+      $privLevels[] = $privs["Privilege_Level"] . "\n";
+    }
+    $privs = array("Privs" => $privLevels);
+    return json_encode($privs);
   }
 
   public function insertNewSectionHeading($academicDept, $headingSchool, $headingOrder, $headingName, $created, $updated_by, $created_by){
