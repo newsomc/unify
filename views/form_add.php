@@ -1,5 +1,7 @@
-<div id ="">
-<form>
+<!--assign JavaScript variables. -->
+<script type="text/javascript">var privs = <?php echo $privs;?> </script>
+
+<form id = "addUser">
  <label for="FirstName">First Name:</label>
  <input id="FirstName" type="text"/>
  

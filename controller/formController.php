@@ -23,8 +23,7 @@ Class formController Extends baseController {
  public function add(){
    $privs = $this->registry->db->getPrivLevels();
    $javascript_array = array(
-		'some_js.js' ,
-		'another_js.js'
+		'form_view.js' 
 	);
 	$css_array = array(
 		'some_css.css',
