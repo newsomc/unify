@@ -4,7 +4,7 @@ class db{
  private static $pdo = NULL;
  private static $singleton = NULL;	
  private static $username  = "root";
- private static $password = "";
+ private static $password = "bigsur2526";
  private static $dsn= "mysql:host=localhost;dbname=bulletin";
 
  private function __construct() {
@@ -75,8 +75,7 @@ class db{
     foreach($dC as $codes){
       $departmentCodes[] = $codes["Academic_Department_Code"] . "\n";
     }
-    $departmentCodes = array("Academic_Department_Codes" => $departmentCodes);
-    return json_encode($departmentCodes);
+    return $departmentCodes = array("Academic_Department_Codes" => $departmentCodes);
   }
 
   public function getPrivLevels(){
@@ -88,8 +87,7 @@ class db{
     foreach($pL as $privs){
       $privLevels[] = $privs["Privilege_Level"] . "\n";
     }
-    $privs = array("Privs" => $privLevels);
-    return json_encode($privs);
+    return $privs = array("Privs" => $privLevels);
   }
 
   public function insertNewSectionHeading($academicDept, $headingSchool, $headingOrder, $headingName, $created, $updated_by, $created_by){

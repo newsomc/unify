@@ -21,19 +21,25 @@ Class formController Extends baseController {
  }
 
  public function add(){
-   $privs = $this->registry->db->getPrivLevels();
+   
    $javascript_array = array(
-		'form_view.js' 
-	);
-	$css_array = array(
-		'some_css.css',
-		'another_css.css'
-	);
+			'form_view.js' 
+   );
+   $css_array = array(
+			'some_css.css',
+			'another_css.css'
+   );
    $this->registry->template->writeHead($javascript_array, $css_array); 
+ 
+   $privs = $this->registry->db->getPrivLevels();
    $this->registry->template->privs = $privs;
+  
+   $deptCodes = $this->registry->db->getDepartmentCodes();
+   $this->registry->template->deptCodes = $deptCodes;
+
+   $this->registry->template->show('form_add');	 
    $this->registry->template->writeFooter(); 
-   $this->registry->template->show('form_add');
- 	
+  
   }
 }
 ?>
