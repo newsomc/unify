@@ -75,7 +75,8 @@ class db{
     foreach($dC as $codes){
       $departmentCodes[] = $codes["Academic_Department_Code"] . "\n";
     }
-    return $departmentCodes = array("Academic_Department_Codes" => $departmentCodes);
+    $departmentCodes = array("Academic_Department_Codes" => $departmentCodes);
+    return json_encode($departmentCodes);
   }
 
   public function getPrivLevels(){

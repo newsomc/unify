@@ -23,7 +23,7 @@ Class formController Extends baseController {
  public function add(){
    
    $javascript_array = array(
-			'form_view.js' 
+			'form_view.js'
    );
    $css_array = array(
 			'some_css.css',
