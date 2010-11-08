@@ -3,6 +3,16 @@ require_once('includes/init.php');
 
 Class formController Extends baseController {
 
+ private $firstName;
+ private $lastName;
+
+ public function __construct(){
+   if (isset($_POST['firstName']) && isset($_POST['lastName'])){
+     $this->firstName = $_POST['firstName'];
+     $this->lastName = $_POST['lastName'];	
+   }
+ } 
+
  public function index(){
    $this->registry->template->form_heading = 'This is the form Index';
    $this->registry->template->show('form_index');
@@ -41,5 +51,12 @@ Class formController Extends baseController {
    $this->registry->template->writeFooter(); 
   
   }
+
+ public function addUser($firstName, $lastName){
+
+   echo $firstName ." " . $lastName . " added to DB!";		
+	
+ }
+
 }
 ?>

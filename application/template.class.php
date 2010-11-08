@@ -60,7 +60,26 @@ Class Template {
 		</body>
 	</html>
 	<?php
- }	
+ }
+
+ function writeHeadControls(){
+	?>
+		<div id="HeadContainer">
+			<div id="BrandContainer">
+			</div>
+			<div id="MainMenu">
+				<div class="Button"><div>
+				<div class="Button"><div>
+				<div class="Button"><div>
+				<div class="Button"><div>
+			</div>
+		</div>
+	<?php
+ }
+
+
+
+	
 }
 ?>
 	
