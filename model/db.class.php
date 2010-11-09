@@ -4,7 +4,6 @@ class db{
  private static $pdo = NULL;
  private static $singleton = NULL;	
  private static $username  = "root";
- //private static $password = "bigsur2526";
  private static $dsn= "mysql:host=localhost;dbname=bulletin";
 
  private function __construct() {
