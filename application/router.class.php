@@ -40,9 +40,14 @@ class router {
 	  $action = $this->action;
 	}
 	/*** run the action ***/
-	$controller->$action();
+	/*	In the future let's create a class that sanitizes all of our user input. 
+	    Let's not save it til too far into the future though :). 
+	    $shield = new Shield($_GET, $_POST);
+        $controller->$action($shield->getGet(), $shield->getPost());
+   
+   */
+	$controller->$action($_POST);
  }
-
 
  private function getController() {
 

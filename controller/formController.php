@@ -3,15 +3,31 @@ require_once('includes/init.php');
 
 Class formController Extends baseController {
 
- private $firstName;
- private $lastName;
+ private $uni;
+ private $fullName;
+ private $securityLevel;
+ private $departmentCode;
 
+ public function __construct($registry){
+	parent::__construct($registry);
+	if(!isset($_POST['uni']))
+		$_POST['uni	'] = '';
+	if(!isset($_POST['fullName']))
+		$_POST['fullName'] = '';
+	if(!isset($_POST['securityLevel']))
+		$_POST['securityLevel'] = '';
+	if(!isset($_POST['departmentCode']))
+		$_POST['departmentCode'] = '';
+
+	$this->fullName = $_POST['fullName'];
+	$this->secuityLevel = $_POST['securityLevel'];
+    $this->departmentCode = $_POST['departmentCode'];
+ }
+
+/*
  public function __construct(){
-   if (isset($_POST['firstName']) && isset($_POST['lastName'])){
-     $this->firstName = $_POST['firstName'];
-     $this->lastName = $_POST['lastName'];	
-   }
- } 
+
+ } */
 
  public function index(){
    $this->registry->template->form_heading = 'This is the form Index';
@@ -39,6 +55,7 @@ Class formController Extends baseController {
 			'some_css.css',
 			'another_css.css'
    );
+   
    $this->registry->template->writeHead($javascript_array, $css_array); 
  
    $privs = $this->registry->db->getPrivLevels();
@@ -52,9 +69,10 @@ Class formController Extends baseController {
   
   }
 
- public function addUser($firstName, $lastName){
-
-   echo $firstName ." " . $lastName . " added to DB!";		
+ public function addUser($input){
+	
+   $this->registry->db->addUser($input['uni'], $input['departmentCode'], $input['securityLevel'], $input['fullName']);
+   echo $input['fullName'] . " added to DB! With the security level of " . $input['securityLevel'] . " and department code, " . $input['departmentCode'];		
 	
  }
 

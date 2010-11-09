@@ -15,9 +15,9 @@ $().ready(function() {
 	
 	$("#DepartmentCodes").focus().autocomplete(departments['Academic_Department_Codes']);                                                                                                                                                          
 	$('#addUser').submit(function(){
-	    $.post('form/addUser', {
-			firstName: $('#FirstName').val(),
-			lastName: $('#LastName').val(),
+	    $.post('/form/addUser', {
+		    uni: $('#uni').val(),
+			fullName: $("#FirstName").val() + " " + $("#LastName").val(),
 			securityLevel: $("#SecurityLevel").val(),
 			departmentCode: $("#DepartmentCodes").val()
 		  }, function(data){
@@ -26,10 +26,13 @@ $().ready(function() {
 		return false; 
 		//alert($('#FirstName').val() + $('#LastName').val() + $('#SecurityLevel').val() + $("#departmentCodes").val());
 	});
+
 });
 </script>
 
 <form id = "addUser" method="post">
+  <label for="uni">UNI:</label>
+  <input id="uni" type="text"/>	
   <label for="FirstName">First Name:</label>
   <input id="FirstName" type="text"/>
   <label for="LastName">Last Name:</label>

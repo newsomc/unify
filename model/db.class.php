@@ -4,11 +4,11 @@ class db{
  private static $pdo = NULL;
  private static $singleton = NULL;	
  private static $username  = "root";
- private static $password = "bigsur2526";
+ //private static $password = "bigsur2526";
  private static $dsn= "mysql:host=localhost;dbname=bulletin";
 
  private function __construct() {
-  self::$pdo = new PDO(self::$dsn, self::$username, self::$password);
+  self::$pdo = new PDO(self::$dsn, self::$username, $GLOBALS['db-pass']);
   self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  }
 
@@ -43,7 +43,6 @@ class db{
         self::$pdo->beginTransaction();
         $exc->execute(array($uni, $departmentCode, $accessLevel, $userName));
         self::$pdo->commit();
-        echo ("The user ".$userName." has been added to UNIFY.");
       }else{
 	echo "No fields can be left null!";
       }
